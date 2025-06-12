@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptSec — Cyber Dive</title>
-  <meta name="description" content="Immersive cyber scroll fading with Matrix rain and soundscape" />
+  <title>CryptSec — Cyber Dive PRO</title>
+  <meta name="description" content="Immersive cyber scroll fading with Matrix rain and secret console" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,13 +14,14 @@
     <div class="controls">
       <button id="soundToggle" aria-label="Toggle ambient sound" title="Toggle ambient sound">🔈</button>
       <button id="modeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      <button id="customPanelBtn" aria-label="Open customization panel" title="Customization">⚙️</button>
     </div>
   </header>
 
   <main>
     <section class="intro">
       <h2>Welcome to CryptSec</h2>
-      <p>Scroll down to dive into the cyber depths with glowing matrix rain and ambient soundscape.</p>
+      <p>Scroll down to dive into the cyber depths with glowing matrix rain, ambient soundscape, and secret hacking console. Press <code>Ctrl+Shift+H</code> to open it.</p>
     </section>
 
     <div class="scroll-container">
@@ -35,10 +36,48 @@
 
   <audio id="ambientSound" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_07b2b895c6.mp3?filename=ambient-tech-126.mp3"></audio>
 
+  <!-- Secret Console -->
+  <div id="consoleOverlay" class="console-hidden" role="dialog" aria-modal="true" aria-label="Hacking console">
+    <div id="consoleContent">
+      <pre id="consoleOutput"></pre>
+      <input type="text" id="consoleInput" aria-label="Console input" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Customization Panel -->
+  <div id="customPanel" class="custom-panel-hidden" role="region" aria-label="Customization panel">
+    <h3>Customization Panel</h3>
+    <label>
+      Background Gradient Start:
+      <input type="color" id="bgStartColor" value="#a1c4fd" />
+    </label>
+    <label>
+      Background Gradient Middle:
+      <input type="color" id="bgMidColor" value="#6a11cb" />
+    </label>
+    <label>
+      Background Gradient End:
+      <input type="color" id="bgEndColor" value="#000000" />
+    </label>
+    <label>
+      Matrix Speed:
+      <input type="range" id="matrixSpeedRange" min="0.1" max="10" step="0.1" value="1" />
+    </label>
+    <label>
+      Matrix Glow Intensity:
+      <input type="range" id="matrixGlowRange" min="5" max="30" step="1" value="15" />
+    </label>
+    <label>
+      Ambient Sound:
+      <select id="soundSelect">
+        <option value="https://cdn.pixabay.com/download/audio/2022/03/16/audio_07b2b895c6.mp3?filename=ambient-tech-126.mp3">Ambient Tech</option>
+        <option value="https://cdn.pixabay.com/download/audio/2022/03/14/audio_52ae973703.mp3?filename=ambient-cyber-121.mp3">Ambient Cyber</option>
+        <option value="">Mute</option>
+      </select>
+    </label>
+    <button id="closeCustomPanel" aria-label="Close customization panel">Close</button>
+  </div>
+
   <script src="background-fade.js"></script>
-  <script src="matrix.js"></script>
-  <script src="soundToggle.js"></script>
-  <script src="modeToggle.js"></script>
-  <script src="parallaxIntro.js"></script>
-</body>
-</html>
+  <script src="matrix-pro.js"></script>
+  <script src="soundTogg
