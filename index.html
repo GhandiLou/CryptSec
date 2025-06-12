@@ -3,17 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptSec - Scroll Fade to Black + Matrix</title>
+  <title>CryptSec — Dive into the Matrix</title>
+  <meta name="description" content="An immersive scroll experience fading from light to dark with a Matrix-style animation." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <header>
+    <h1>CryptSec</h1>
+    <button id="soundToggle" aria-label="Toggle ambient sound">🔈</button>
+  </header>
 
-  <div class="scroll-container">
-    <div class="spacer"></div>
-    <canvas id="matrixCanvas"></canvas>
-  </div>
+  <main>
+    <section class="intro">
+      <h2>Welcome to CryptSec</h2>
+      <p>Scroll down to dive from bright daylight into the depths of the Matrix.</p>
+    </section>
 
-  <script src="matrix.js"></script>
+    <div class="scroll-container">
+      <div class="spacer"></div>
+      <canvas id="matrixCanvas" aria-label="Matrix code animation" role="img"></canvas>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 CryptSec. All rights reserved.</p>
+  </footer>
+
+  <audio id="ambientSound" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_07b2b895c6.mp3?filename=ambient-tech-126.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
   <script src="background-fade.js"></script>
+  <script src="matrix.js"></script>
+  <script src="soundToggle.js"></script>
 </body>
 </html>
