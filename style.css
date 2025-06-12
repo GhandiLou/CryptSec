@@ -4,17 +4,8 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   font-family: monospace;
-  background: #000;
-}
-
-#gradient-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 400vh;
-  background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
-  z-index: -1;
+  background-color: white; /* start white */
+  transition: background-color 0.1s linear;
 }
 
 .scroll-container {
