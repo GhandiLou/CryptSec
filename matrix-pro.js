@@ -17,27 +17,30 @@
   const columns = Math.floor(width / fontSize);
   const drops = new Array(columns).fill(1);
 
- function draw() {
-  // Clear entire canvas every frame - no trailing effect
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, width, height);
+  function draw() {
+    // Clear entire canvas with solid black - NO trails or glow
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, width, height);
 
-  ctx.font = fontSize + 'px Courier New';
-  ctx.textBaseline = 'top';
-  ctx.fillStyle = '#0f0';
+    ctx.font = fontSize + 'px Courier New';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = '#0f0';
 
-  for (let i = 0; i < drops.length; i++) {
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    const x = i * fontSize;
-    const y = drops[i] * fontSize;
+    // Glow removed:
+    // ctx.shadowColor = '#0f0';
+    // ctx.shadowBlur = 10;
 
-    ctx.fillText(text, x, y);
+    for (let i = 0; i < drops.length; i++) {
+      const text = letters[Math.floor(Math.random() * letters.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
 
-    if (y > height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
+      ctx.fillText(text, x, y);
+
+      if (y > height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
   }
-}
-
 
   function loop() {
     draw();
