@@ -18,13 +18,16 @@
   const drops = new Array(columns).fill(1);
 
   function draw() {
-    // translucent black background for trail effect
     ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
     ctx.fillRect(0, 0, width, height);
 
     ctx.font = fontSize + 'px Courier New';
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#0f0';
+
+    // Glow removed:
+    // ctx.shadowColor = '#0f0';
+    // ctx.shadowBlur = 10;
 
     for (let i = 0; i < drops.length; i++) {
       const text = letters[Math.floor(Math.random() * letters.length)];
