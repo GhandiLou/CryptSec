@@ -14,8 +14,8 @@ html, body {
   background-color: white;
   color: #111;
   scroll-behavior: smooth;
-  transition: background-color 0.2s linear;
   user-select: none;
+  transition: background-color 0.3s linear;
 }
 
 header {
@@ -49,12 +49,15 @@ header h1 {
   user-select: none;
   transition: transform 0.2s ease;
 }
-#soundToggle:hover {
+#soundToggle:hover,
+#soundToggle:focus {
+  outline: none;
   transform: scale(1.2);
+  color: #afffaf;
 }
 
 main {
-  margin-top: 70px; /* header height + margin */
+  margin-top: 70px; /* header height */
 }
 
 .intro {
@@ -63,10 +66,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: transparent;
   padding: 2rem;
   text-align: center;
   color: #222;
+  transition: transform 0.5s ease-out;
+  will-change: transform;
 }
 
 .intro h2 {
@@ -101,6 +105,7 @@ canvas#matrixCanvas {
     drop-shadow(0 0 6px #0f0)
     drop-shadow(0 0 12px #0f0);
   mix-blend-mode: screen;
+  background: transparent;
 }
 
 footer {
