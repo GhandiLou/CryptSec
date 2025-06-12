@@ -25,8 +25,6 @@
     ctx.font = fontSize + 'px Courier New';
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#0f0';
-    ctx.shadowColor = '#0f0';
-    ctx.shadowBlur = 10;
 
     for (let i = 0; i < drops.length; i++) {
       const text = letters[Math.floor(Math.random() * letters.length)];
