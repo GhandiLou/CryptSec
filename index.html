@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CryptSec — Dive into the Matrix</title>
-<meta name="description" content="Immersive scroll fading from light to dark with Matrix code animation" />
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryptSec — Cyber Dive</title>
+  <meta name="description" content="Immersive cyber scroll fading with Matrix rain and soundscape" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>CryptSec</h1>
-    <button id="soundToggle" aria-label="Toggle ambient sound" title="Toggle ambient sound">🔈</button>
+    <div class="controls">
+      <button id="soundToggle" aria-label="Toggle ambient sound" title="Toggle ambient sound">🔈</button>
+      <button id="modeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </div>
   </header>
 
   <main>
     <section class="intro">
       <h2>Welcome to CryptSec</h2>
-      <p>Scroll down to dive from bright daylight into the depths of the Matrix.</p>
+      <p>Scroll down to dive into the cyber depths with glowing matrix rain and ambient soundscape.</p>
     </section>
 
     <div class="scroll-container">
@@ -30,12 +33,12 @@
     <p>© 2025 CryptSec. All rights reserved.</p>
   </footer>
 
-  <audio id="ambientSound" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_07b2b895c6.mp3?filename=ambient-tech-126.mp3" type="audio/mpeg" />
-  </audio>
+  <audio id="ambientSound" loop preload="auto" src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_07b2b895c6.mp3?filename=ambient-tech-126.mp3"></audio>
 
   <script src="background-fade.js"></script>
   <script src="matrix.js"></script>
   <script src="soundToggle.js"></script>
+  <script src="modeToggle.js"></script>
+  <script src="parallaxIntro.js"></script>
 </body>
 </html>
