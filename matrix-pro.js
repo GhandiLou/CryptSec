@@ -2,7 +2,6 @@
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
   let width, height;
-  let frameCount = 0;  // Frame counter
 
   function resize() {
     width = window.innerWidth;
@@ -16,11 +15,13 @@
   const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()-_=+[]{}<>?/|\\'.split('');
   const fontSize = 20;
   const columns = Math.floor(width / fontSize);
-  const drops = new Array(columns).fill(1);
+  // Use floats for drops to enable fractional movement
+  const drops = new Array(columns).fill(0);
+
+  // Speed in lines per frame (smaller = slower)
+  const speed = 0.15;
 
   function draw() {
-    frameCount++;
-
     // Clear full canvas with solid black (no trail, no glow)
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, width, height);
@@ -42,11 +43,11 @@
 
       ctx.fillText(text, x, y);
 
-      // Update drops every 4 frames (adjust this number to slow down or speed up)
-      if (frameCount % 8 === 0) {
-        if (y > height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
+      // Increment drop by fractional speed
+      drops[i] += speed;
+
+      // Reset drop if off screen, randomize reset chance for natural effect
+      if (y > height && Math.random() > 0.975) drops[i] = 0;
     }
   }
 
