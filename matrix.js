@@ -11,13 +11,14 @@ const columns = Math.floor(width / fontSize);
 const drops = Array(columns).fill(1);
 
 function drawMatrix() {
+  // Transparent black background for trailing effect
   ctx.fillStyle = 'rgba(0, 0, 0, 0.075)';
   ctx.fillRect(0, 0, width, height);
 
   for (let i = 0; i < drops.length; i++) {
     const text = matrix[Math.floor(Math.random() * matrix.length)];
 
-    // Set random green shades for glow effect
+    // Random green glow shade
     const greenShade = 150 + Math.floor(Math.random() * 105);
     ctx.fillStyle = `rgb(0, ${greenShade}, 0)`;
     ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
