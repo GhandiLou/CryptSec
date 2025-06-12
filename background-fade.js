@@ -1,4 +1,12 @@
-// Smooth background fade from white to black on scroll
+console.log('background-fade.js loaded');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  let scrollRatio = scrollTop / maxScroll;
+  console.log('scrollRatio:', scrollRatio); // check scrolling effect
+
+  // Smooth background fade from white to black on scroll
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
