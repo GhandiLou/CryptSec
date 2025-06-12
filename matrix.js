@@ -6,19 +6,24 @@ let height = canvas.height = window.innerHeight;
 
 const letters = 'アカサタナハマヤラワABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
 const matrix = letters.split('');
-const fontSize = 14;
+const fontSize = 16;
 const columns = Math.floor(width / fontSize);
 const drops = Array(columns).fill(1);
 
 function drawMatrix() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.075)';
   ctx.fillRect(0, 0, width, height);
-
-  ctx.fillStyle = '#0F0';
-  ctx.font = fontSize + 'px monospace';
 
   for (let i = 0; i < drops.length; i++) {
     const text = matrix[Math.floor(Math.random() * matrix.length)];
+
+    // Set random green shades for glow effect
+    const greenShade = 150 + Math.floor(Math.random() * 105);
+    ctx.fillStyle = `rgb(0, ${greenShade}, 0)`;
+    ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
+    ctx.shadowColor = `rgb(0, ${greenShade}, 0)`;
+    ctx.shadowBlur = 10;
+
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
     if (drops[i] * fontSize > height && Math.random() > 0.975) {
@@ -29,7 +34,7 @@ function drawMatrix() {
   }
 }
 
-let interval;
+let interval = null;
 
 function startMatrix() {
   canvas.style.display = 'block';
@@ -39,8 +44,10 @@ function startMatrix() {
 }
 
 function stopMatrix() {
-  clearInterval(interval);
-  interval = null;
+  if (interval) {
+    clearInterval(interval);
+    interval = null;
+  }
   ctx.clearRect(0, 0, width, height);
   canvas.style.display = 'none';
 }
