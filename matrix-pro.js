@@ -25,10 +25,6 @@
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#0f0';
 
-    // Glow removed:
-    // ctx.shadowColor = '#0f0';
-    // ctx.shadowBlur = 10;
-
     for (let i = 0; i < drops.length; i++) {
       const text = letters[Math.floor(Math.random() * letters.length)];
       const x = i * fontSize;
