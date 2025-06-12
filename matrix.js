@@ -7,8 +7,8 @@ let height = canvas.height = window.innerHeight;
 const letters = 'アカサタナハマヤラワABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
 const matrix = letters.split('');
 const fontSize = 14;
-const columns = width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+const columns = Math.floor(width / fontSize);
+const drops = Array(columns).fill(1);
 
 function drawMatrix() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -33,11 +33,14 @@ let interval;
 
 function startMatrix() {
   canvas.style.display = 'block';
-  interval = setInterval(drawMatrix, 50);
+  if (!interval) {
+    interval = setInterval(drawMatrix, 50);
+  }
 }
 
 function stopMatrix() {
   clearInterval(interval);
+  interval = null;
   ctx.clearRect(0, 0, width, height);
   canvas.style.display = 'none';
 }
@@ -47,9 +50,9 @@ window.addEventListener('scroll', () => {
   const triggerPoint = document.body.scrollHeight - window.innerHeight * 1.5;
 
   if (scrollY > triggerPoint) {
-    if (!interval) startMatrix();
+    startMatrix();
   } else {
-    if (interval) stopMatrix();
+    stopMatrix();
   }
 });
 
