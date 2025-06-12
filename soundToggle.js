@@ -9,44 +9,48 @@ function toggleSound() {
   if (ambientSound.paused) {
     ambientSound.volume = 0;
     ambientSound.play();
-    fadeVolume(ambientSound, 0, 0.4, 2000);
+    fadeInVolume(ambientSound, 0.3, 3000);
     setSoundIcon(true);
-    localStorage.setItem('soundEnabled', 'true');
   } else {
-    fadeVolume(ambientSound, ambientSound.volume, 0, 2000, () => {
+    fadeOutVolume(ambientSound, 0, 3000).then(() => {
       ambientSound.pause();
       setSoundIcon(false);
-      localStorage.setItem('soundEnabled', 'false');
     });
   }
 }
 
-soundBtn.addEventListener('click', toggleSound);
-
-// Smooth fade function
-function fadeVolume(audio, from, to, duration, callback) {
-  const stepTime = 50;
-  const steps = duration / stepTime;
-  let currentStep = 0;
-  const volumeStep = (to - from) / steps;
-  audio.volume = from;
-
-  const fadeInterval = setInterval(() => {
-    currentStep++;
-    audio.volume = Math.min(Math.max(audio.volume + volumeStep, 0), 1);
-    if (currentStep >= steps) {
-      clearInterval(fadeInterval);
-      if (callback) callback();
-    }
-  }, stepTime);
+function fadeInVolume(audio, target, duration) {
+  return new Promise((resolve) => {
+    const step = (target - audio.volume) / (duration / 50);
+    let vol = audio.volume;
+    const interval = setInterval(() => {
+      vol += step;
+      if (vol >= target) {
+        audio.volume = target;
+        clearInterval(interval);
+        resolve();
+      } else {
+        audio.volume = vol;
+      }
+    }, 50);
+  });
 }
 
-// Load saved sound state
-window.addEventListener('load', () => {
-  if (localStorage.getItem('soundEnabled') === 'true') {
-    ambientSound.play();
-    setSoundIcon(true);
-  } else {
-    setSoundIcon(false);
-  }
-});
+function fadeOutVolume(audio, target, duration) {
+  return new Promise((resolve) => {
+    const step = (audio.volume - target) / (duration / 50);
+    let vol = audio.volume;
+    const interval = setInterval(() => {
+      vol -= step;
+      if (vol <= target) {
+        audio.volume = target;
+        clearInterval(interval);
+        resolve();
+      } else {
+        audio.volume = vol;
+      }
+    }, 50);
+  });
+}
+
+soundBtn.addEventListener('click', toggleSound);
