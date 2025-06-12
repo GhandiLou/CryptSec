@@ -19,7 +19,7 @@
   const drops = new Array(columns).fill(0);
 
   // Speed in lines per frame (smaller = slower)
-  const speed = 0.15;
+  const speed = 0.08;
 
   function draw() {
     // Clear full canvas with solid black (no trail, no glow)
