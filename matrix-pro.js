@@ -43,7 +43,7 @@
       ctx.fillText(text, x, y);
 
       // Update drops every 4 frames (adjust this number to slow down or speed up)
-      if (frameCount % 4 === 0) {
+      if (frameCount % 8 === 0) {
         if (y > height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
       }
