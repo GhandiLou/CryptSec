@@ -18,7 +18,7 @@
   const drops = new Array(columns).fill(1);
 
   function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, width, height);
 
     ctx.font = fontSize + 'px Courier New';
