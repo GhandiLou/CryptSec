@@ -3,44 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptSec - Matrix Black Background</title>
+  <title>CryptSec - Matrix Background</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Customization Panel Toggle Button -->
-  <button id="customPanelBtn" title="Open Customization Panel">⚙️</button>
-
-  <!-- Customization Panel -->
-  <div id="customPanel" class="hidden">
-    <h2>Customize</h2>
-    <label>Background Top Color:
-      <input type="color" id="bgTopColor" value="#111111" />
-    </label>
-    <label>Background Bottom Color:
-      <input type="color" id="bgBottomColor" value="#000000" />
-    </label>
-    <label>Matrix Speed:
-      <input type="range" id="matrixSpeed" min="1" max="20" value="12" />
-    </label>
-    <label>
-      <input type="checkbox" id="glowToggle" checked /> Matrix Glow
-    </label>
-    <label>
-      <input type="checkbox" id="ambientSoundToggle" checked /> Ambient Sound
-    </label>
-    <button id="closePanelBtn">Close Panel</button>
-  </div>
-
-  <!-- Console (toggle with Ctrl+Shift+H) -->
-  <div id="console" class="hidden"></div>
-
-  <!-- Matrix Canvas -->
   <canvas id="matrix"></canvas>
 
-  <!-- Ambient Sound -->
-  <audio id="ambientSound" loop src="ambient.mp3"></audio>
+  <main>
+    <h1>Welcome to CryptSec</h1>
+    <p>Your matrix-themed website without distractions.</p>
+  </main>
 
-  <script src="matrix-pro.js" defer></script>
+  <script src="matrix-pro.js"></script>
 </body>
 </html>
