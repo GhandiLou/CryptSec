@@ -1,13 +1,13 @@
 /* Base dark mode black background */
 body {
+  margin: 0;
   background: linear-gradient(to bottom, #111111 0%, #000000 100%);
   color: #00ff00;
-  margin: 0;
+  font-family: 'Courier New', monospace;
   overflow-x: hidden;
-  font-family: 'Courier New', Courier, monospace;
-  transition: background 2s ease;
   height: 100vh;
 }
+
 
 /* Matrix canvas fills viewport */
 #matrix {
@@ -16,7 +16,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
+  pointer-events: none;  /* so clicks go through */
   z-index: 0;
   background: transparent;
 }
