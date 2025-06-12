@@ -1,13 +1,4 @@
-console.log('background-fade.js loaded');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
-  let scrollRatio = scrollTop / maxScroll;
-  console.log('scrollRatio:', scrollRatio); // check scrolling effect
-
-  // Smooth background fade from white to black on scroll
-
+// Smooth background fade from white to black on scroll with eased curve
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -16,11 +7,17 @@ window.addEventListener('scroll', () => {
   if (scrollRatio > 1) scrollRatio = 1;
   if (scrollRatio < 0) scrollRatio = 0;
 
-  // Smooth easing for nicer fade
+  // Eased curve for smoother fade
   const easedRatio = Math.pow(scrollRatio, 1.5);
 
-  // Calculate gray level (255 white → 0 black)
+  // Calculate gray value from white (255) to black (0)
   const colorVal = Math.floor(255 * (1 - easedRatio));
 
   document.body.style.backgroundColor = `rgb(${colorVal}, ${colorVal}, ${colorVal})`;
+
+  // Optional: parallax effect on intro text
+  const intro = document.querySelector('.intro');
+  if(intro){
+    intro.style.transform = `translateY(${scrollRatio * -50}px)`;
+  }
 });
