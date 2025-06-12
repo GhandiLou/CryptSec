@@ -1,14 +1,14 @@
-body, html {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow-x: hidden;
   font-family: monospace;
-  background: linear-gradient(to bottom, #ffffff 0%, #000000 150%);
+  background: linear-gradient(to bottom, #ffffff 0%, #000000 300%);
 }
 
 .scroll-container {
-  height: 400vh;
+  height: 400vh; /* makes the page long enough to scroll through gradient */
   position: relative;
 }
 
