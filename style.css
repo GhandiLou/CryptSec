@@ -1,11 +1,82 @@
+/* Reset and base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow-x: hidden;
-  font-family: monospace;
-  background-color: white; /* start white */
-  transition: background-color 0.1s linear;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: white;
+  color: #111;
+  scroll-behavior: smooth;
+  transition: background-color 0.2s linear;
+  user-select: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.6);
+  color: #0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid #0f0;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 700;
+}
+
+#soundToggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #0f0;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+#soundToggle:hover {
+  transform: scale(1.2);
+}
+
+main {
+  margin-top: 70px; /* header height + margin */
+}
+
+.intro {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 2rem;
+  text-align: center;
+  color: #222;
+}
+
+.intro h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1.25rem;
+  max-width: 600px;
 }
 
 .scroll-container {
@@ -17,13 +88,39 @@ html, body {
   height: 300vh;
 }
 
-canvas {
+canvas#matrixCanvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   display: none;
-  z-index: 100;
+  z-index: 150;
   pointer-events: none;
+  filter:
+    drop-shadow(0 0 6px #0f0)
+    drop-shadow(0 0 12px #0f0);
+  mix-blend-mode: screen;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: #444;
+  background: #111;
+  user-select: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .intro h2 {
+    font-size: 2rem;
+  }
+  .intro p {
+    font-size: 1rem;
+  }
+  header {
+    padding: 1rem;
+  }
 }
